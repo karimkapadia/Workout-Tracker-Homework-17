@@ -18,7 +18,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useUnifiedTopology: true,
+useCreateIndex: true,
+useFindAndModify: false });
 
 app.put("/api/workouts/", (req, res) => {
   console.log(`put [/api/workouts]`,JSON.stringify(req.body));
